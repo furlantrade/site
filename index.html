@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>SpaceX-Token</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      background-color: #0b0e1a;
+      color: #ffffff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    img.token-logo {
+      max-width: 300px;
+      border-radius: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+    }
+
+    h1 {
+      font-size: 3em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: 2em;
+      margin-top: 40px;
+      color: #00ffcc;
+    }
+
+    p {
+      font-size: 1.1em;
+      color: #ccc;
+      margin-bottom: 30px;
+      line-height: 1.6em;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 30px;
+      margin: 10px;
+      font-size: 1em;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-buy {
+      background-color: #00ffcc;
+      color: #000;
+    }
+
+    .btn-buy:hover {
+      background-color: #00cc99;
+    }
+
+    .btn-wallet {
+      background-color: #ffaa00;
+      color: #000;
+    }
+
+    .btn-wallet:hover {
+      background-color: #cc8800;
+    }
+
+    .btn-whitepaper {
+      background-color: #4444ff;
+      color: #fff;
+    }
+
+    .btn-whitepaper:hover {
+      background-color: #3333cc;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9em;
+      color: #888;
+      padding-bottom: 30px;
+    }
+
+    .section {
+      margin-top: 50px;
+      text-align: left;
+    }
+
+    .section p {
+      text-align: justify;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="spacex-token.png" alt="SpaceX Token Logo" class="token-logo">
+    <h1>SpaceX-Token</h1>
+    <p>A memecoin que te leva direto à lua — e além!</p>
+
+    <a class="btn btn-buy"
+       href="https://jup.ag/swap/SOL/SPACEX-TOKEN_ADDRESS"
+       target="_blank">
+      Comprar na Jupiter DEX
+    </a>
+
+    <button class="btn btn-wallet" onclick="addToPhantom()">
+      Adicionar à carteira Phantom
+    </button>
+
+    <!-- Descrição do token -->
+    <div class="section">
+      <h2>Sobre o SpaceX-Token</h2>
+      <p>
+        O SpaceX-Token é uma criptomoeda inspirada na inovação espacial e no espírito ousado de exploração. Criado como uma memecoin com utilidade real, o SPX Token promove a adoção divertida de criptoativos com foco em comunidade, parcerias e impacto cultural.
+      </p>
+      <p>
+        ✅ Suprimento total: 1 bilhão de tokens<br>
+        ✅ Rede: Solana<br>
+        ✅ Utilidade: Pagamentos em eventos, NFTs, staking, acesso a comunidades exclusivas e muito mais!<br>
+        ✅ Zero taxas de compra – apenas energia da galáxia!
+      </p>
+    </div>
+
+    <!-- Whitepaper -->
+    <div class="section">
+      <h2>Whitepaper</h2>
+      <p>
+        O whitepaper do SpaceX-Token detalha nossa visão, tokenomics, roadmap, equipe e valores. Conheça o plano para se tornar a memecoin mais lendária da galáxia.
+      </p>
+      <a class="btn btn-whitepaper" href="whitepaper.pdf" target="_blank">
+        📘 Ler Whitepaper
+      </a>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 SpaceX-Token | Desenvolvido para a comunidade 🚀</p>
+    </footer>
+  </div>
+
+  <script>
+    async function addToPhantom() {
+      const tokenAddress = "SEU_TOKEN_ADDRESS"; // Troque pelo endereço real
+      const phantom = window.solana;
+
+      if (phantom && phantom.isPhantom) {
+        try {
+          const result = await phantom.request({
+            method: "wallet_watchAsset",
+            params: {
+              type: "ERC20", // Não suportado oficialmente, workaround
+              options: {
+                address: tokenAddress,
+                symbol: "SPX",
+                decimals: 6,
+                image: window.location.origin + "/spacex-token.png"
+              }
+            }
+          });
+          alert("Token solicitado à Phantom!");
+        } catch (err) {
+          alert("Erro ao adicionar à carteira: " + err.message);
+        }
+      } else {
+        alert("Instale a carteira Phantom para continuar.");
+        window.open("https://phantom.app/", "_blank");
+      }
+    }
+  </script>
+</body>
+</html>
