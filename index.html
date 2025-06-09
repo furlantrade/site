@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Swap SOL → Seu Token</title>
-  <!-- Carrega o script do widget (sem CORS issues) -->
-  <script src="https://terminal.jup.ag/main-v4.js" data-preload></script>
+  <title>Swap SOL para Token</title>
   <style>
     body {
       background-color: #0d1117;
@@ -15,33 +13,22 @@
       align-items: center;
       padding: 20px;
     }
-    h1 { color: #00ffe1; }
-    #jupiter-terminal {
+
+    iframe {
+      border: none;
       width: 100%;
       max-width: 600px;
-      min-height: 600px;
+      height: 600px;
+      border-radius: 12px;
     }
   </style>
 </head>
 <body>
   <h1>Swap de SOL para Seu Token</h1>
-  <div id="jupiter-terminal"></div>
 
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      window.Jupiter.init({
-        displayMode: 'integrated',
-        containerId: 'jupiter-terminal', // ID do container
-        endpoint: 'https://api.mainnet-beta.solana.com',
-        strictTokenList: false,
-        formProps: {
-          fixedInputMint: true,
-          initialInputMint: 'So11111111111111111111111111111111111111112', // SOL
-          fixedOutputMint: true,
-          initialOutputMint: 'BQcdHdAQW1hczDbBi9hiegXAR7A98Q9jx3X3iBBBDiq4' // seu token
-        }
-      });
-    });
-  </script>
+  <iframe
+    src="https://terminal.jup.ag/?inputMint=So11111111111111111111111111111111111111112&outputMint=BQcdHdAQW1hczDbBi9hiegXAR7A98Q9jx3X3iBBBDiq4&displayMode=integrated&strictTokenList=false"
+    allow="clipboard-read; clipboard-write; web-share"
+  ></iframe>
 </body>
 </html>
