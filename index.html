@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Swap SOL para Token Personalizado</title>
+  <script src="https://unpkg.com/@jup-ag/widget@latest"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0b0c10;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px;
+    }
+    h1 {
+      color: #66fcf1;
+    }
+    #jupiter-widget {
+      width: 100%;
+      max-width: 600px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Swap de SOL para Token Personalizado</h1>
+  <div id="jupiter-widget"></div>
+
+  <script>
+    window.Jupiter.init({
+      displayMode: "integrated", // ou 'modal'
+      container: document.getElementById("jupiter-widget"),
+      defaultExplorer: "solscan",
+      endpoint: "https://api.mainnet-beta.solana.com",
+      strictTokenList: false,
+      defaultInputMint: "So11111111111111111111111111111111111111112", // SOL
+      defaultOutputMint: "BQcdHdAQW1hczDbBi9hiegXAR7A98Q9jx3X3iBBBDiq4", // Seu token
+    });
+  </script>
+</body>
+</html>
